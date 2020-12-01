@@ -1,0 +1,13 @@
+guestbook:
+  version: 1.0
+  css:
+    layout:
+      css/guestbook.css: {}
+  js:
+    js/picture.js: {}
+
+form:
+  version: 1.0
+  css:
+    layout:
+      css/form.css: {}

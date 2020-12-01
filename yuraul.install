@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * @file
+ *
+ * Install, update and uninstall functions for the yuraul0 module.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_install().
+ *
+ * Copy default user picture to files folder.
+ */
+function yuraul_install() {
+  $dir = 'public://yuraul0/user';
+  Drupal::service('file_system')
+    ->prepareDirectory($dir, FileSystemInterface::CREATE_DIRECTORY);
+  Drupal::service('file_system')
+    ->copy(__DIR__ . '/images/default.png', $dir, FileSystemInterface::EXISTS_REPLACE);
+
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database table to store feedback messages and user information.
+ *
+ * @see hook_schema()
+ */
+function yuraul_schema() {
+  $schema['guestbook'] = [
+    'description' => 'Stores feedback messages with user information.',
+    'fields' => [
+      'post_id' => [
+        'type' => 'serial', // Check if starts with the 1.
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'description' => 'Primary Key: Unique feedback ID.',
+      ],
+      'message' => [
+        'type' => 'text',
+        'length' => 500,
+        'not null' => TRUE,
+        'description' => 'User\'s feedback text.',
+      ],
+      'picture' => [
+        'type' => 'int',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'URI of the attached file.',
+      ],
+      'timestamp' => [
+         'type' => 'int',
+         'size' => 'normal',
+         'not null' => TRUE,
+         'default' => 0,
+         'description' => 'Authored on.'
+       ],
+      'username' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the user.',
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'User\'s email address.',
+      ],
+      'phone' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'big',
+        'description' => 'The phone number of the user.',
+      ],
+      'avatar' => [
+        'type' => 'int',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'User\'s avatar.',
+      ],
+    ],
+    'primary key' => ['post_id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Delete folder with user pictures and all files uploaded by the module.
+ */
+function yuraul_uninstall() {
+  // Get all files.
+  $files = \Drupal::entityQuery('file')->execute();
+  // Delete if used by our module.
+  foreach ($files as $fid) {
+    $file = File::load($fid);
+    $usage = \Drupal::service('file.usage')->listUsage($file);
+    if (array_key_exists('yuraul0', $usage)) {
+      \Drupal::service('file.usage')->delete($file, 'yuraul0', 'file', $fid, 0);
+      $file->delete();
+    }
+  }
+  $dir = 'public://yuraul0';
+  Drupal::service('file_system')->deleteRecursive($dir);
+}

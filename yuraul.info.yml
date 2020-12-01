@@ -1,0 +1,7 @@
+name: Yuraul Module
+description: Creates simple guestbook.
+package: Custom
+type: module
+version: 1.0
+core: 8.x
+configure: yuraul.admin

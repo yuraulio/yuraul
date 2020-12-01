@@ -1,0 +1,14 @@
+yuraul.feedback:
+  title: 'Feedback'
+  description: 'You can leave your feedback here'
+  parent: main
+  route_name: yuraul.feedback
+  menu_name: main
+  weight: 100
+
+yuraul.admin:
+  title: 'Yuraul Guestbook settings'
+  description: 'Guestbook settings'
+  parent: system.admin_config
+  route_name: yuraul.admin
+  weight: -100

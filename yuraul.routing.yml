@@ -1,0 +1,23 @@
+yuraul.feedback:
+  path: '/feedback'
+  defaults:
+    _controller: '\Drupal\yuraul\Controller\yuraulController::show'
+    _title: 'Yuraul Guestbook'
+  requirements:
+    _permission: 'access content'
+
+yuraul.edit_feedback:
+  path: '/feedback/edit/{postID}'
+  defaults:
+    _controller: '\Drupal\yuraul\Controller\yuraulController::edit'
+    _title: 'Yuraul Guestbook'
+  requirements:
+    _permission: 'administer site configuration'
+
+yuraul.admin:
+  path: '/admin/config/yuraul'
+  defaults:
+    _controller: '\Drupal\yuraul\Controller\yuraulController::admin'
+    _title: 'Guestbook settings'
+  requirements:
+    _permission: 'administer site configuration'
