@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.feedback_post
+  module:
+    - text
+id: node.feedback_post.body
+field_name: body
+entity_type: node
+bundle: feedback_post
+label: Message
+description: 'Message user leaved for us'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

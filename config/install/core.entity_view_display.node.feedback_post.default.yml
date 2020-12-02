@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.feedback_post.body
+    - node.type.feedback_post
+  module:
+    - text
+    - user
+id: node.feedback_post.default
+targetEntityType: node
+bundle: feedback_post
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

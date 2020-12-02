@@ -17,9 +17,9 @@ use Drupal\Core\Entity\ContentEntityInterface;
  * @ingroup yuraul
  *
  * @ContentEntityType(
- *   id = "feedbackid",
- *   label = @Translation("Feedback label"),
- *   base_table = "feedback",
+ *   id = "yuraul_feedback",
+ *   label = @Translation("Feedback entity"),
+ *   base_table = "yuraul_feedback",
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid",
