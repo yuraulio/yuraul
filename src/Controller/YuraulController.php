@@ -4,6 +4,7 @@ namespace Drupal\yuraul\Controller;
 
 use Drupal\file\Entity\File;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\node\Entity\Node;
 use Drupal\yuraul\Utility\PostStorageTrait;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
@@ -98,12 +99,22 @@ class YuraulController extends ControllerBase {
    */
   public function show() {
     // Adding form for sending post to the page.
-    $page[] = ['form' => \Drupal::formBuilder()->getForm('Drupal\yuraul\Form\AddFeedback')];
+//    $page[] = ['form' => \Drupal::formBuilder()->getForm('Drupal\yuraul\Form\AddFeedback')];
+//
+//    // Adding feedback list to the page.
+//    $page[] = $this->feedback();
+//    return $page;
+//    $node = Node::create([
+//      'type' => 'page',
+//      'title' => 'Feedback header',
+//    ]);
+//    $node->save();
+    kint(Node::load(3));
 
-    // Adding feedback list to the page.
-    $page[] = $this->feedback();
-
-    return $page;
+    return [
+      '#type' => 'markup',
+      '#markup' => $this->t('<div style="color: red;">OK.</div>'),
+    ];
 }
 
   /**
