@@ -7,6 +7,9 @@ dependencies:
   module:
     - text
     - user
+  enforced:
+    module:
+      - yuraul
 id: node.feedback_post.default
 targetEntityType: node
 bundle: feedback_post

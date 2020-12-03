@@ -7,6 +7,9 @@ dependencies:
   module:
     - text
     - user
+  enforced:
+    module:
+      - yuraul
 id: node.feedback_post.default
 targetEntityType: node
 bundle: feedback_post
@@ -18,6 +21,8 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
 hidden: {  }
+

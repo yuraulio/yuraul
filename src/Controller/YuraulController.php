@@ -110,6 +110,11 @@ class YuraulController extends ControllerBase {
 //    ]);
 //    $node->save();
 //    kint(Node::load(3));
+    // Deleting field storage.
+//    \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_username')->delete();
+
+    // Deleting field.
+//    \Drupal\field\Entity\FieldConfig::loadByName('feedback_post', 'feedback_post', 'field_username')->delete();
 
     return [
       '#type' => 'markup',
