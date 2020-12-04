@@ -3,14 +3,22 @@ status: true
 dependencies:
   config:
     - field.field.node.feedback_post.body
+    - field.field.node.feedback_post.field_avatar
+    - field.field.node.feedback_post.field_email
+    - field.field.node.feedback_post.field_phone
+    - field.field.node.feedback_post.field_picture
     - field.field.node.feedback_post.field_username
+    - image.style.thumbnail
     - node.type.feedback_post
   enforced:
     module:
       - yuraul
   module:
+    - image
     - path
     - text
+_core:
+  default_config_hash: vdJCvBD6e91YwY9ObsuCYrINnM2rRKbxXgX07dXHsQQ
 id: node.feedback_post.default
 targetEntityType: node
 bundle: feedback_post
@@ -29,6 +37,38 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_avatar:
+    weight: 124
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_email:
+    weight: 122
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_phone:
+    weight: 123
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_picture:
+    weight: 125
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
   field_username:
     weight: 121
     settings:
