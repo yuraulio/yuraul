@@ -17,7 +17,7 @@
  *   methods for the node object.
  * - label: (optional) The title of the node.
  * - content: All node items. Use {{ content }} to print them all,
- *   or print a subset such as {{ content.field_example }}. Use
+ *   or print a subset such as {{ node.field_example }}. Use
  *   {{ content|without('field_example') }} to temporarily suppress the printing
  *   of a given child element.
  * - author_picture: The node author user entity, rendered using the "compact"
@@ -57,7 +57,7 @@
  * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
  * - page: Flag for the full page state. Will be true if view_mode is 'full'.
  * - readmore: Flag for more state. Will be true if the teaser content of the
- *   node cannot hold the main body content.
+ *   node cannot hold the main body node.
  * - logged_in: Flag for authenticated user status. Will be true when the
  *   current user is a logged-in member.
  * - is_admin: Flag for admin user status. Will be true when the current user
@@ -79,26 +79,31 @@
   ]
 %}
 {{ attach_library('yuraul/guestbook') }}
-<article{{ attributes.addClass(classes) }}>
-  <header>
-    {{ title_prefix }}
-      {% if label and not page %}
-      <h2{{ title_attributes.addClass('node__title') }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-      </h2>
-    {% endif %}
-    {{ title_suffix }}
-    {% if display_submitted %}
-      <div class="node__meta">
-        {{ author_picture }}
-        <span{{ author_attributes }}>
-          {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        </span>
-        {{ metadata }}
-      </div>
-    {% endif %}
-  </header>
-  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content.field_avatar }}
+<article class="post">
+  <aside class="user-info">
+    <h3 class="username">{{ node.field_username.value }}</h3>
+    <div class="avatar-container">
+      {{ content.field_avatar }}
+    </div>
+    <ul>
+      <li class="usermail"><span>e-mail:</span><br>{{ node.field_email.value }}</li>
+      <li class="userphone"><span>phone:</span><br>{{ node.field_phone.value }}</li>
+    </ul>
+  </aside>
+  <div class="post-message">
+    <div class="post-header">
+      <span class="user">Posted by {{ node.field_username.value }} on &nbsp;</span>
+      <span class="time">{{ node.created.value|date('F/d/Y H:i:s') }}</span>
+    </div>
+    <div class="post-body">
+      <p>{{ content.body }}</p>
+      {% if content.field_picture|render|trim %}
+        <p class="attached">Attached image:</p>
+        {{ content.field_picture }}
+        <div class="full-post-picture">
+          {{ content.field_picture }}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </article>
