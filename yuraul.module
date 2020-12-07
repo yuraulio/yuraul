@@ -2,6 +2,15 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
+function yuraul_theme() {
+  return [
+    'views_view_fields__feedback__default' => [
+      'template' => 'views-view-fields--feedback--default',
+      'base hook' => 'views_view_fields',
+    ],
+  ];
+}
+
 /**
  * Implements hook_form_FORM_ID_alter().
  * Form ID: add_feedback

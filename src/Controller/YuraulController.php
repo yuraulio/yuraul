@@ -99,27 +99,24 @@ class YuraulController extends ControllerBase {
    */
   public function show() {
     // Adding form for sending post to the page.
-//    $page[] = ['form' => \Drupal::formBuilder()->getForm('Drupal\yuraul\Form\AddFeedback')];
-//
-//    // Adding feedback list to the page.
-//    $page[] = $this->feedback();
-//    return $page;
-//    $node = Node::create([
-//      'type' => 'page',
-//      'title' => 'Feedback header',
-//    ]);
-//    $node->save();
-//    kint(Node::load(3));
-    // Deleting field storage.
-//    \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_username')->delete();
+    $page[] = ['form' => \Drupal::formBuilder()->getForm('Drupal\yuraul\Form\AddFeedback')];
 
-    // Deleting field.
-//    \Drupal\field\Entity\FieldConfig::loadByName('feedback_post', 'feedback_post', 'field_username')->delete();
-
-    return [
-      '#type' => 'markup',
-      '#markup' => $this->t('<div style="color: red;">OK.</div>'),
+    // Add a view with the feedback posts list.
+    $page[] = [
+      'view' => [
+        '#type' => 'view',
+        '#name' => 'feedback',
+        '#display_id' => 'default',
+      ],
     ];
+
+    $view = \Drupal\views\Views::getView('feedback');
+    $view->setDisplay('default');
+    $view->execute();
+
+    // Get the results of the view.
+    $view_result = $view->result;
+    return $page;
 }
 
   /**
