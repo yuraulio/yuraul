@@ -4,9 +4,9 @@ use Drupal\Core\Form\FormStateInterface;
 
 function yuraul_theme() {
   return [
-    'views_view_fields__feedback__default' => [
-      'template' => 'views-view-fields--feedback--default',
-      'base hook' => 'views_view_fields',
+    'node__feedback_post__teaser' => [
+      'template' => 'node--feedback-post--teaser',
+      'base hook' => 'node',
     ],
   ];
 }
