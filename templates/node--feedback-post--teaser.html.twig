@@ -1,7 +1,8 @@
 {#
 /**
  * @file
- * Bartik's theme implementation to display a node.
+ * Module overriding of the node template for feedback_post
+ * content type.
  *
  * Available variables:
  * - node: The node entity with limited access to object properties and methods.
@@ -79,7 +80,7 @@
   ]
 %}
 {{ attach_library('yuraul/guestbook') }}
-<article class="post">
+<article{{ attributes.addClass(classes) }}>
   <aside class="user-info">
     <h3 class="username">{{ node.field_username.value }}</h3>
     <div class="avatar-container">
@@ -90,19 +91,16 @@
       <li class="userphone"><span>phone:</span><br>{{ node.field_phone.value }}</li>
     </ul>
   </aside>
-  <div class="post-message">
+  <div{{ content_attributes.addClass('post-message') }}>
     <div class="post-header">
       <span class="user">Posted by {{ node.field_username.value }} on &nbsp;</span>
       <span class="time">{{ node.created.value|date('F/d/Y H:i:s') }}</span>
     </div>
     <div class="post-body">
-      <p>{{ content.body }}</p>
+      {{ content.body }}
       {% if content.field_picture|render|trim %}
         <p class="attached">Attached image:</p>
         {{ content.field_picture }}
-        <div class="full-post-picture">
-          {{ content.field_picture }}
-        </div>
       {% endif %}
     </div>
   </div>
