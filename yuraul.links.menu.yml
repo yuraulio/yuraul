@@ -12,3 +12,17 @@ yuraul.admin:
   parent: system.admin_config
   route_name: yuraul.admin
   weight: -100
+
+# Feedback menu items definition
+entity.feedback_entity.collection:
+  title: 'Feedback list'
+  route_name: entity.feedback_entity.collection
+  description: 'List Feedback entities'
+  parent: system.admin_structure
+  weight: 100
+
+feedback_entity.admin.structure.settings:
+  title: 'Feedback settings'
+  description: 'Configure Feedback entities'
+  route_name: feedback_entity.settings
+  parent: system.admin_structure

@@ -1,0 +1,5 @@
+entity.feedback_entity.add_form:
+  route_name: entity.feedback_entity.add_form
+  title: 'Add Feedback'
+  appears_on:
+    - entity.feedback_entity.collection
