@@ -102,9 +102,16 @@ class YuraulController extends ControllerBase {
    *   A render array.
    */
   public function show() {
+//    $entities = \Drupal::entityTypeManager()
+//      ->getStorage('feedback_entity')
+//      ->loadMultiple();
+//    foreach ($entities as $entity) {
+//      $entity->delete();
+//    }
+
     // Adding form for sending post to the page.
     $entity = \Drupal::entityTypeManager()->getStorage('feedback_entity')->create();
-    $page[] = ['form' => \Drupal::service('entity.form_builder')->getForm($entity, 'default')];
+    $page[] = ['form' => \Drupal::service('entity.form_builder')->getForm($entity, 'add')];
 
     // Add a view with the feedback posts list.
     $page[] = [
@@ -115,12 +122,6 @@ class YuraulController extends ControllerBase {
       ],
     ];
 
-//    $view = \Drupal\views\Views::getView('feedback');
-//    $view->setDisplay('default');
-//    $view->execute();
-//
-//    // Get the results of the view.
-//    $view_result = $view->result;
     return $page;
 }
 
