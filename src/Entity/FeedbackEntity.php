@@ -77,6 +77,36 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
   /**
    * {@inheritdoc}
    */
+  public function getEmail() {
+    return $this->get('email')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setEmail($email) {
+    $this->set('email', $email);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPhone() {
+    return $this->get('phone')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setPhone($phone) {
+    $this->set('phone', $phone);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCreatedTime() {
     return $this->get('created')->value;
   }

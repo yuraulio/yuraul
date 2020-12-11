@@ -30,7 +30,7 @@ class ValidNameValidator extends ConstraintValidator {
    * @param string $value
    */
   private function isValidUsername($value) {
-    $match = preg_match('/^[a-zA-Z][a-zA-Z_0-9]{0,98}[a-zA-Z0-9]$/s', $value);
+    $match = preg_match('/^[a-zA-Z][a-zA-Z_0-9 ]{0,98}[a-zA-Z0-9]$/s', $value);
     if ($match === 0) {
       return FALSE;
     }

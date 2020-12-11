@@ -4,12 +4,8 @@ namespace Drupal\yuraul\Controller;
 
 use Drupal\file\Entity\File;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\node\Entity\Node;
 use Drupal\yuraul\Utility\PostStorageTrait;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Drupal\Core\File\FileSystemInterface;
-use Drupal\Core\Config\ConfigFactory;
-
 /**
  * Constructs a guestbook page and admin panel.
  */
@@ -69,24 +65,30 @@ class YuraulController extends ControllerBase {
   public function feedback() {
     // Getting path to page template.
     $template = file_get_contents($this->getModulePath() . '/templates/feedback.html.twig');
-
-    // Check if user has permissions to edit and add edit buttons if has.
-    $permission = \Drupal::currentUser()->hasPermission('administer site configuration');
-
-    // Add list of posts, template and permission value to array to be returned.
-    $page['posts'] = [
-      '#type' => 'inline_template',
-      '#template' => $template,
-      '#context' => [
-        'posts' => $this->prepareForRender($this->getPosts()),
-        'can_edit' => $permission,
-      ],
-      '#attached' => [
-        'library' => [
-          'yuraul/guestbook',
-        ],
-      ],
+//
+//    // Check if user has permissions to edit and add edit buttons if has.
+//    $permission = \Drupal::currentUser()->hasPermission('administer site configuration');
+    $ids = \Drupal::entityQuery('feedback_entity')->execute();
+    $posts = \Drupal::entityTypeManager()
+      ->getStorage('feedback_entity')
+      ->loadMultiple($ids);
+    $page = [
+      '#type' => 'markup',
+      '#markup' => t('<div style="color: red;">My page.</div>'),
     ];
+      // Add list of posts, template and permission value to array to be returned.
+//    $page['posts'] = [
+//      '#type' => 'inline_template',
+//      '#template' => $template,
+//      '#context' => [
+//        'posts' => $posts,
+//      ],
+//      '#attached' => [
+//        'library' => [
+//          'yuraul/guestbook',
+//        ],
+//      ],
+//    ];
 
     return $page;
   }
@@ -101,59 +103,24 @@ class YuraulController extends ControllerBase {
    */
   public function show() {
     // Adding form for sending post to the page.
-//    $page[] = ['form' => \Drupal::formBuilder()->getForm('Drupal\yuraul\Form\AddFeedback')];
-//
-//    // Add a view with the feedback posts list.
-//    $page[] = [
-//      'view' => [
-//        '#type' => 'view',
-//        '#name' => 'feedback',
-//        '#display_id' => 'default',
-//      ],
-//    ];
-//
+    $entity = \Drupal::entityTypeManager()->getStorage('feedback_entity')->create();
+    $page[] = ['form' => \Drupal::service('entity.form_builder')->getForm($entity, 'default')];
+
+    // Add a view with the feedback posts list.
+    $page[] = [
+      'view' => [
+        '#type' => 'view',
+        '#name' => 'feedback_view',
+        '#display_id' => 'default',
+      ],
+    ];
+
 //    $view = \Drupal\views\Views::getView('feedback');
 //    $view->setDisplay('default');
 //    $view->execute();
 //
 //    // Get the results of the view.
 //    $view_result = $view->result;
-
-    $files = \Drupal::entityQuery('file')->execute();
-    // Delete if used by our module.
-    foreach ($files as $fid) {
-      $file = File::load($fid);
-      $usage = \Drupal::service('file.usage')->listUsage($file);
-      if (array_key_exists('yuraul', $usage)) {
-        \Drupal::service('file.usage')->delete($file, 'yuraul0', 'file', $fid, 0);
-        $file->delete();
-      }
-    }
-
-    $source = $this->getModulePath() . '/images/default.png';
-    $destination = 'public://yuraul/avatars';
-    \Drupal::service('file_system')
-      ->prepareDirectory($destination, FileSystemInterface::CREATE_DIRECTORY);
-    $destination = \Drupal::service('file_system')
-      ->copy($source, $destination, FileSystemInterface::EXISTS_REPLACE);
-    $filename = \Drupal::service('file_system')->basename($destination);
-    // Create file entity.
-    $image = File::create();
-    $image->setFileUri($destination);
-    $image->setOwnerId(\Drupal::currentUser()->id());
-    $image->setMimeType('image/' . pathinfo($destination, PATHINFO_EXTENSION));
-    $image->setFileName($filename);
-    $image->setPermanent();
-    $image->save();
-    \Drupal::service('file.usage')
-      ->add($image, $this->getModuleName(), 'file', $image->id());
-    $config = \Drupal::service('config.factory')->getEditable('yuraul.settings');
-    $config->set('default_avatar.uuid', $image->uuid())->save();
-
-    $page = [
-      '#type' => 'markup',
-      '#markup' => \Drupal::config('yuraul.settings')->get('default_avatar.uuid'),
-    ];
     return $page;
 }
 
