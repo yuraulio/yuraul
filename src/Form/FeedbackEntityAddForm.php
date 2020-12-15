@@ -36,7 +36,7 @@ class FeedbackEntityAddForm extends ContentEntityForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
     /* @var \Drupal\yuraul\Entity\FeedbackEntity $entity */
     $form = parent::buildForm($form, $form_state);
-
+    $form['actions']['submit']['#value'] = $this->t('Send feedback');
     return $form;
   }
 

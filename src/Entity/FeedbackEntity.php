@@ -235,7 +235,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'file_extensions' => 'png jpg jpeg',
         'file_directory' => 'yuraul/avatars',
         'max_filesize' => '2 MB',
-        'default_image' => [ // TODO: Add default image.
+        'default_image' => [
           'uuid' => self::defaultImage(),
           'alt' => 'Default user avatar',
           'title' => 'User avatar',
@@ -275,7 +275,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['status']->setDescription(t('A boolean indicating whether the Test entity is published.'))
+    $fields['status']->setDescription(t('Default is published when adding.'))
       ->setDisplayOptions('form', [
         'type' => 'boolean_checkbox',
         'weight' => 10,
