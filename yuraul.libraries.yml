@@ -1,8 +1,8 @@
-guestbook:
+feedback:
   version: 1.0
   css:
     layout:
-      css/guestbook.css: {}
+      css/feedback.css: {}
 
 form:
   version: 1.0

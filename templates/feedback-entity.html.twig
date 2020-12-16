@@ -15,9 +15,32 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass('feedback_entity') }}>
+{{ dump(content.created|keys) }}
+{{ attach_library('yuraul/feedback') }}
+<article{{ attributes.addClass('feedback-entity') }}>
   {% if content %}
-    {{- content -}}
+    <aside class="user-info">
+      <h3 class="username">{{ content.name }}</h3>
+      <div class="avatar-container">
+        {{ content.avatar }}
+      </div>
+      <ul>
+        <li class="usermail">{{ content.email }}</li>
+        <li class="userphone">{{ content.phone }}</li>
+      </ul>
+    </aside>
+    <div class="post-message">
+      <div class="post-header">
+        <div class="user">{{ content.name }}</div>
+        <div class="time">{{ content.created }}</div>
+      </div>
+      <div class="post-body">
+        <p>{{ content.message }}</p>
+        {% if not content.picture == '' %}
+          <p class="attached">Attached image:</p>
+          {{ content.picture }}
+        {% endif %}
+      </div>
+    </div>
   {% endif %}
-  <p>meow</p>
-</div>
+</article>

@@ -158,13 +158,13 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'is_acsii' => TRUE,
       ])
       ->setDisplayOptions('view', [
-        'label' => '',
+        'label' => 'hidden',
         'type' => 'string',
-        'weight' => -10,
+        'weight' => 1,
       ])
       ->setDisplayOptions('form', [
         'type' => 'string_textfield',
-        'weight' => -10,
+        'weight' => 1,
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
@@ -175,58 +175,38 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
       ->setLabel(t('Email'))
       ->setDescription(t('The email address of the user.'))
       ->setDisplayOptions('view', [
-        'label' => '',
+        'label' => 'inline',
         'type' => 'string',
-        'weight' => -9,
+        'weight' => 2,
       ])
       ->setDisplayOptions('form', [
         'type' => 'string_textfield',
-        'weight' => -9,
+        'weight' => 2,
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
     $fields['phone'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Phone number'))
+      ->setLabel(t('Phone'))
       ->setDescription(t('The phone number of the user.'))
       ->setSettings([
         'max_length' => 15,
         'is_acsii' => TRUE,
       ])
       ->setDisplayOptions('view', [
-        'label' => '',
+        'label' => 'inline',
         'type' => 'string',
-        'weight' => 1,
+        'weight' => 3,
       ])
       ->setDisplayOptions('form', [
         'type' => 'string_textfield',
-        'weight' => 1,
+        'weight' => 3,
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE)
       ->addConstraint('ValidPhoneNumber');
-
-    $fields['message'] = BaseFieldDefinition::create('string_long')
-      ->setLabel(t('Message'))
-      ->setDescription(t('A feedback message.'))
-      ->setSettings([
-        'case_sensitive' => TRUE,
-        'is_acsii' => FALSE,
-      ])
-      ->setDisplayOptions('view', [
-        'label' => '',
-        'type' => 'string',
-        'weight' => 2,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textarea',
-        'weight' => 2,
-      ])
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE)
-      ->setRequired(TRUE);
 
     $fields['avatar'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Avatar'))
@@ -235,6 +215,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'file_extensions' => 'png jpg jpeg',
         'file_directory' => 'yuraul/avatars',
         'max_filesize' => '2 MB',
+        'alt_field_required' => 0,
         'default_image' => [
           'uuid' => self::defaultImage(),
           'alt' => 'Default user avatar',
@@ -244,16 +225,37 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         ],
       ])
       ->setDisplayOptions('view', [
-        'label' => '',
+        'label' => 'hidden',
         'type' => 'image',
-        'weight' => 3,
+        'weight' => 4,
       ])
       ->setDisplayOptions('form', [
         'type' => 'image_image',
-        'weight' => 3,
+        'weight' => 4,
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
+
+    $fields['message'] = BaseFieldDefinition::create('string_long')
+      ->setLabel(t('Message'))
+      ->setDescription(t('A feedback message.'))
+      ->setSettings([
+        'case_sensitive' => TRUE,
+        'is_acsii' => FALSE,
+      ])
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'string',
+        'weight' => 5,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textarea',
+        'weight' => 5,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
 
     $fields['picture'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Picture'))
@@ -262,15 +264,16 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'file_extensions' => 'png jpg jpeg',
         'file_directory' => 'yuraul/pictures',
         'max_filesize' => '5 MB',
+        'alt_field_required' => 0,
       ])
       ->setDisplayOptions('view', [
-        'label' => '',
+        'label' => 'above',
         'type' => 'image',
-        'weight' => 4,
+        'weight' => 6,
       ])
       ->setDisplayOptions('form', [
         'type' => 'image_image',
-        'weight' => 4,
+        'weight' => 6,
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
@@ -282,12 +285,27 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
       ]);
 
     $fields['created'] = BaseFieldDefinition::create('created')
-      ->setLabel(t('Created'))
-      ->setDescription(t('The time that the post was created.'));
+      ->setLabel(t('Posted on'))
+      ->setDescription(t('The time when the post was created.'))
+      ->setDisplayOptions('view', [
+        'label' => 'inline',
+        'type' => 'timestamp',
+        'settings' => [
+          'date_format' => 'custom',
+          'custom_date_format' => 'F/d/Y H:i:s',
+        ],
+        'weight' => 7,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'datetime_timestamp',
+        'weight' => 7,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the post was last edited.'));
+      ->setDescription(t('The time when the post was last edited.'));
 
     return $fields;
   }

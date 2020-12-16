@@ -1,5 +1,6 @@
 #feedback-entity-add-form {
   max-width: 576px;
+  margin: 0 auto;
   padding: 15px;
   background-color: deepskyblue;
 }
