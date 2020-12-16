@@ -4,6 +4,15 @@
   background-color: deepskyblue;
 }
 
+#form-system-messages {
+  padding: 0 15px;
+}
+
+#form-system-messages .messages:first-child,
+#form-system-messages .messages:last-child {
+  margin: 0;
+}
+
 #feedback-entity-add-form fieldset {
   margin: 0;
   padding: 0;

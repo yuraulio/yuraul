@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Render\Element;
+
 function yuraul_theme($existing, $type, $theme, $path) {
   return [
     'feedback_entity_add_form' =>
@@ -7,5 +9,19 @@ function yuraul_theme($existing, $type, $theme, $path) {
         'render element' => 'form',
         'file' => 'yuraul.theme.inc',
       ],
+    'feedback_entity' => [
+      'render element' => 'elements',
+    ],
   ];
+}
+
+/**
+ * Prepares variables for sponsor templates.
+ */
+function template_preprocess_feedback_entity(&$variables) {
+  // Helpful $content variable for templates.
+  $variables['content'] = [];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
 }
