@@ -111,7 +111,8 @@ class YuraulController extends ControllerBase {
 
     // Adding form for sending post to the page.
     $entity = \Drupal::entityTypeManager()->getStorage('feedback_entity')->create();
-    $page[] = ['form' => \Drupal::service('entity.form_builder')->getForm($entity, 'add')];
+    $form = ['form' => \Drupal::service('entity.form_builder')->getForm($entity, 'add')];
+    $page[] = $form;
 
     // Add a view with the feedback posts list.
     $page[] = [

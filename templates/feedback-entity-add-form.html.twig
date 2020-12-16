@@ -1,0 +1,29 @@
+{{ attach_library('yuraul/form') }}
+{{ form.form_build_id }}
+{{ form.form_token }}
+{{ form.form_id }}
+{{ form.status }}
+{#{{ dump(form|keys) }}#}
+{{ form.errors }}
+<fieldset>
+  <legend>Add feedback</legend>
+  <div class="form-upper">
+    <div class="form-upper-left">
+      {{ form.name }}
+      {{ form.email }}
+      {{ form.phone }}
+    </div>
+    <div class="form-upper-right">
+      {{ form.avatar }}
+    </div>
+  </div>
+  <div class="form-lower">
+    {{ form.message }}
+    {{ form.picture }}
+  </div>
+  <div class="form-act">
+    {{ form.actions }}
+  </div>
+</fieldset>
+
+

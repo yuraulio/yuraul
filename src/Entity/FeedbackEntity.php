@@ -151,7 +151,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the user who leaved a message.'))
+      ->setDescription(t('The name of the user.'))
       ->setSettings([
         'max_length' => 100,
         'case_sensitive' => TRUE,
@@ -210,7 +210,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
 
     $fields['message'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('Message'))
-      ->setDescription(t('The message user leaved.'))
+      ->setDescription(t('A feedback message.'))
       ->setSettings([
         'case_sensitive' => TRUE,
         'is_acsii' => FALSE,
@@ -283,11 +283,11 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
-      ->setDescription(t('The time that the entity was created.'));
+      ->setDescription(t('The time that the post was created.'));
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the entity was last edited.'));
+      ->setDescription(t('The time that the post was last edited.'));
 
     return $fields;
   }

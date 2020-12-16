@@ -1,91 +1,74 @@
-form.add-feedback {
-  margin: 0 auto;
-  padding: 0 15px 15px;
-  max-width: 768px;
+#feedback-entity-add-form {
+  max-width: 576px;
+  padding: 15px;
   background-color: deepskyblue;
 }
 
-form.add-feedback .fieldset-wrapper {
+#feedback-entity-add-form fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+#feedback-entity-add-form fieldset,
+#feedback-entity-add-form input {
+  border-color: white;
+}
+
+#feedback-entity-add-form legend {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+#feedback-entity-add-form .form-upper,
+#feedback-entity-add-form .form-lower {
+  display: flex;
+}
+
+#feedback-entity-add-form .form-upper-left {
+  padding: 0 15px 0 15px;
+  box-sizing: border-box;
+  width: 60%;
+}
+
+#feedback-entity-add-form .form-upper-right {
+  padding: 0 15px 0 0;
+  box-sizing: border-box;
+  width: 40%;
+}
+
+#feedback-entity-add-form .image-widget {
+  width: 100%;
+}
+#feedback-entity-add-form .field--name-avatar .form-item,
+#feedback-entity-add-form .field--name-picture .form-item,
+#feedback-entity-add-form .image-widget-data {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-form.add-feedback fieldset,
-form.add-feedback input {
-  border-color: white;
-}
-
-form.add-feedback legend {
-  margin: 0 auto;
-  font-size: 1.5em;
-  border-color: white;
-}
-
-#form-system-messages {
-  width: 100%;
-}
-
-form.add-feedback .upper {
-  display: flex;
-  width: 100%;
-}
-
-form.add-feedback .left {
-  width: 50%;
-  padding: 15px;
-}
-
-form.add-feedback .upper input {
-  width: 100%;
-}
-
-form.add-feedback .right,
-form.add-feedback .left {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  box-sizing: border-box;
-  width: 50%;
-  padding: 15px;
 }
 
-.form-type-textarea {
-  width: 100%;
-  margin-top: 0;
+#feedback-entity-add-form .image-widget-data *{
+  margin-top: 8px;
 }
 
-form.add-feedback .form-type-textarea label,
-#edit-message--description {
-  padding-left: 15px;
+#feedback-entity-add-form .field--name-avatar .image-preview img,
+#feedback-entity-add-form .field--name-picture .image-preview img {
+  display: block;
+  margin: 0 auto;
 }
 
-form.add-feedback .form-textarea-wrapper {
-  padding: 0 15px;
+#feedback-entity-add-form .field--name-message {
+  padding: 0 15px 0 15px;
+  width: 70%;
 }
 
-form.add-feedback actions {
-  display: flex;
+#feedback-entity-add-form .field--name-picture {
+  padding: 0 15px 0 0;
+  width: 30%;
 }
 
-form.add-feedback input.button {
-  border-radius: 0;
-  background-image: none;
-  background-color: white;
-}
-
-form.add-feedback input.button:hover {
-  background-color: deepskyblue;
-  color: white;
-}
-
-@media (max-width: 768px) {
-  form.add-feedback .upper {
-    flex-direction: column;
-  }
-
-  form.add-feedback .right,
-  form.add-feedback .left {
-    width: 100%;
-  }
+#feedback-entity-add-form .form-actions input {
+  display: block;
+  margin: 0 auto;
 }
