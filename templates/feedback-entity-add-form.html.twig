@@ -4,9 +4,10 @@
 {{ form.form_id }}
 {{ form.status }}
 {#{{ dump(form|keys) }}#}
-{{ form.errors }}
+
 <fieldset>
   <legend>Add feedback</legend>
+  {{ form.system_messages }}
   <div class="form-upper">
     <div class="form-upper-left">
       {{ form.name }}
