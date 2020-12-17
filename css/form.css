@@ -1,4 +1,4 @@
-#feedback-entity-add-form {
+#feedback-entity-add2-form {
   max-width: 576px;
   margin: 0 auto;
   padding: 15px;
@@ -14,71 +14,71 @@
   margin: 0;
 }
 
-#feedback-entity-add-form fieldset {
+#feedback-entity-add2-form fieldset {
   margin: 0;
   padding: 0;
 }
 
-#feedback-entity-add-form fieldset,
-#feedback-entity-add-form input {
+#feedback-entity-add2-form fieldset,
+#feedback-entity-add2-form input {
   border-color: white;
 }
 
-#feedback-entity-add-form legend {
+#feedback-entity-add2-form legend {
   text-align: center;
   font-size: 1.5em;
 }
 
-#feedback-entity-add-form .form-upper,
-#feedback-entity-add-form .form-lower {
+#feedback-entity-add2-form .form-upper,
+#feedback-entity-add2-form .form-lower {
   display: flex;
 }
 
-#feedback-entity-add-form .form-upper-left {
+#feedback-entity-add2-form .form-upper-left {
   padding: 0 15px 0 15px;
   box-sizing: border-box;
   width: 60%;
 }
 
-#feedback-entity-add-form .form-upper-right {
+#feedback-entity-add2-form .form-upper-right {
   padding: 0 15px 0 0;
   box-sizing: border-box;
   width: 40%;
 }
 
-#feedback-entity-add-form .image-widget {
+#feedback-entity-add2-form .image-widget {
   width: 100%;
 }
-#feedback-entity-add-form .field--name-avatar .form-item,
-#feedback-entity-add-form .field--name-picture .form-item,
-#feedback-entity-add-form .image-widget-data {
+#feedback-entity-add2-form .field--name-avatar .form-item,
+#feedback-entity-add2-form .field--name-picture .form-item,
+#feedback-entity-add2-form .image-widget-data {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#feedback-entity-add-form .image-widget-data *{
+#feedback-entity-add2-form .image-widget-data *{
   margin-top: 8px;
 }
 
-#feedback-entity-add-form .field--name-avatar .image-preview img,
-#feedback-entity-add-form .field--name-picture .image-preview img {
+#feedback-entity-add2-form .field--name-avatar .image-preview img,
+#feedback-entity-add2-form .field--name-picture .image-preview img {
   display: block;
   margin: 0 auto;
 }
 
-#feedback-entity-add-form .field--name-message {
+#feedback-entity-add2-form .field--name-message {
   padding: 0 15px 0 15px;
   width: 70%;
 }
 
-#feedback-entity-add-form .field--name-picture {
+#feedback-entity-add2-form .field--name-picture {
   padding: 0 15px 0 0;
   width: 30%;
 }
 
-#feedback-entity-add-form .form-actions input {
+#feedback-entity-add2-form .form-actions input {
   display: block;
   margin: 0 auto;
 }

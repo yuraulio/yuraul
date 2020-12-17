@@ -25,7 +25,8 @@ use Drupal\file\Entity\File;
  *
  *     "form" = {
  *       "default" = "Drupal\yuraul\Form\FeedbackEntityForm",
- *       "add" = "Drupal\yuraul\Form\FeedbackEntityAddForm",
+ *       "add2" = "Drupal\yuraul\Form\FeedbackEntityAddForm",
+ *       "add" = "Drupal\yuraul\Form\FeedbackEntityForm",
  *       "edit" = "Drupal\yuraul\Form\FeedbackEntityForm",
  *       "delete" = "Drupal\yuraul\Form\FeedbackEntityDeleteForm",
  *     },

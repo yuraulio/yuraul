@@ -4,7 +4,7 @@ use Drupal\Core\Render\Element;
 
 function yuraul_theme($existing, $type, $theme, $path) {
   return [
-    'feedback_entity_add_form' =>
+    'feedback_entity_add2_form' =>
       [
         'render element' => 'form',
         'file' => 'yuraul.theme.inc',
