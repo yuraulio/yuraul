@@ -136,7 +136,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
     $image->setPermanent();
     $image->save();
     \Drupal::service('file.usage')
-      ->add($image, 'test', 'entity', $image->id());
+      ->add($image, 'yuraul', 'entity', $image->id());
     return $image->uuid();
   }
 
@@ -215,7 +215,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'file_extensions' => 'png jpg jpeg',
         'file_directory' => 'yuraul/avatars',
         'max_filesize' => '2 MB',
-        'alt_field_required' => 0,
+        'alt_field' => 0,
         'default_image' => [
           'uuid' => self::defaultImage(),
           'alt' => 'Default user avatar',
@@ -227,6 +227,9 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
       ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'image',
+        'settings' => [
+          'image_style' => 'thumbnail',
+        ],
         'weight' => 4,
       ])
       ->setDisplayOptions('form', [
@@ -264,11 +267,15 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'file_extensions' => 'png jpg jpeg',
         'file_directory' => 'yuraul/pictures',
         'max_filesize' => '5 MB',
-        'alt_field_required' => 0,
+        'alt_field' => 0,
       ])
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'image',
+        'settings' => [
+          'image_style' => 'medium',
+          'image_link' => 'file',
+        ],
         'weight' => 6,
       ])
       ->setDisplayOptions('form', [
