@@ -31,12 +31,13 @@
     </aside>
     <div class="post-message">
       <div class="post-header">
-        <div class="user">{{ content.name }}</div>
-        <div class="time">{{ content.created }}</div>
+        {{ content.created }}
+        <span> by&nbsp;</span>
+        {{ content.name }}
       </div>
       <div class="post-body">
         <p>{{ content.message }}</p>
-        {% if not content.picture == '' %}
+        {% if not content.picture %}
           <p class="attached">Attached image:</p>
           {{ content.picture }}
         {% endif %}

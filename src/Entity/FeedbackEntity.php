@@ -176,7 +176,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
       ->setLabel(t('Email'))
       ->setDescription(t('The email address of the user.'))
       ->setDisplayOptions('view', [
-        'label' => 'inline',
+        'label' => 'above',
         'type' => 'string',
         'weight' => 2,
       ])
@@ -196,7 +196,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'is_acsii' => TRUE,
       ])
       ->setDisplayOptions('view', [
-        'label' => 'inline',
+        'label' => 'above',
         'type' => 'string',
         'weight' => 3,
       ])
@@ -271,7 +271,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
         'alt_field' => 0,
       ])
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'image',
         'settings' => [
           'image_style' => 'medium',

@@ -46,13 +46,13 @@ h1.page-title {
   font-family: sans-serif;
 }
 
-.avatar-container {
+.avatar-container div {
   width: 100px;
   height: 100px;
   padding-bottom: 15px;
 }
 
-.avatar-container img {
+.avatar-container div img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -70,7 +70,15 @@ h1.page-title {
 .post-header {
   display: flex;
   justify-content: flex-end;
-  font-size: 0.8em;
+}
+
+.post-header .field {
+  display: flex;
+  font-weight: bold;
+}
+
+.post-header .field .field__label {
+  font-weight: normal;
 }
 
 .post-body {
@@ -78,9 +86,3 @@ h1.page-title {
   color: #61614e;
 }
 
-.post-body .attached {
-  margin: 0;
-  padding: 15px 0 5px 15px;
-  border-top: 1px solid white;
-  color: #f9f3a0;
-}
