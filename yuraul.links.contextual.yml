@@ -1,0 +1,4 @@
+yuraul_configure:
+  title: 'Edit post'
+  route_name: 'entity.feedback_entity.edit_form'
+  group: 'feedback_entity'

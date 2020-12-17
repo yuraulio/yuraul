@@ -2,6 +2,7 @@
 
 namespace Drupal\yuraul\Entity;
 
+use Drupal\Core\Entity\EntityChangedInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
@@ -55,7 +56,7 @@ use Drupal\file\Entity\File;
  *   field_ui_base_route = "feedback_entity.settings"
  * )
  */
-class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterface {
+class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterface, EntityChangedInterface {
 
   use EntityChangedTrait;
   use EntityPublishedTrait;
