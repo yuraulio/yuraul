@@ -6,18 +6,10 @@ yuraul.feedback:
   requirements:
     _permission: 'access content'
 
-yuraul.edit_feedback:
-  path: '/feedback/edit/{postID}'
-  defaults:
-    _controller: '\Drupal\yuraul\Controller\yuraulController::edit'
-    _title: 'Yuraul Guestbook'
-  requirements:
-    _permission: 'administer site configuration'
-
-yuraul.admin:
+system.admin_structure_feedback:
   path: '/admin/config/yuraul'
   defaults:
-    _controller: '\Drupal\yuraul\Controller\yuraulController::admin'
-    _title: 'Guestbook settings'
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Title from route'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'access administration pages'
