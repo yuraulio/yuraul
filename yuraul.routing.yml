@@ -1,7 +1,7 @@
 yuraul.feedback:
   path: '/feedback'
   defaults:
-    _controller: '\Drupal\yuraul\Controller\yuraulController::show'
+    _controller: '\Drupal\yuraul\Controller\YuraulController::buildGuestbook'
     _title: 'Yuraul Guestbook'
   requirements:
     _permission: 'access content'

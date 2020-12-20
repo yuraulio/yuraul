@@ -6,7 +6,7 @@ dependencies:
 id: feedback_view
 label: Feedback
 module: views
-description: 'List of all feedbacks'
+description: 'List of all feedback posts for the guestbook main page'
 tag: ''
 base_table: feedback_entity
 base_field: id
