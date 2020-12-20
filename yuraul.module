@@ -26,6 +26,9 @@ function yuraul_theme() {
  * Implements theme_preprocess_hook().
  *
  * Prepares variables for sponsor templates.
+ *
+ * @param $variables
+ *   The variables array (modify in place).
  */
 function template_preprocess_feedback_entity(&$variables) {
   // Helpful $content variable for templates.

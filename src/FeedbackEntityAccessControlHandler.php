@@ -15,7 +15,7 @@ use Drupal\Core\Access\AccessResult;
 class FeedbackEntityAccessControlHandler extends EntityAccessControlHandler {
 
   /**
-   * Cheking permissions for the user account.
+   * Checking permissions for the user account.
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     /** @var \Drupal\yuraul\Entity\FeedbackEntityInterface $entity */
@@ -45,7 +45,7 @@ class FeedbackEntityAccessControlHandler extends EntityAccessControlHandler {
   }
 
   /**
-   * Access to create to all users.
+   * Access to create for all users.
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
     return AccessResult::allowedIfHasPermission($account, 'add feedback entities');

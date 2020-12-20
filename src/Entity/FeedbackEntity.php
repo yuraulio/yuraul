@@ -143,7 +143,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
     // Add the defaults entity fields.
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    // Add the published field.
+    // Add a published field.
     $fields += static::publishedBaseFieldDefinitions($entity_type);
 
     // Add fields required by the task.

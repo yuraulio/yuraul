@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 class FeedbackEntityDeleteForm extends ContentEntityDeleteForm {
 
   /**
-   * Delete entity and attached images.
+   * Form submit handler. Delete entity and attached images.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
@@ -28,7 +28,7 @@ class FeedbackEntityDeleteForm extends ContentEntityDeleteForm {
       $form_state->setRedirectUrl($untranslated_entity->toUrl('canonical'));
     }
     else {
-      // Delete avatar if not default.
+      // Delete avatar file if it is not default.
       $id = $entity->avatar->target_id;
       if (!empty($id)) {
         $avatar = \Drupal::entityTypeManager()
@@ -50,7 +50,7 @@ class FeedbackEntityDeleteForm extends ContentEntityDeleteForm {
         $picture->delete();
       }
 
-      // Delete entity at last.
+      // Delete FeedbackEntity at last.
       $entity->delete();
       $form_state->setRedirectUrl($this->getRedirectUrl());
     }

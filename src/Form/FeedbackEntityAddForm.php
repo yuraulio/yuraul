@@ -11,7 +11,9 @@ use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Form controller for Feedback edit forms.
+ * This form is used to leave feedback by anonymous user.
+ *
+ * It appears on a main guestbook page.
  *
  * @ingroup yuraul
  */
@@ -73,6 +75,11 @@ class FeedbackEntityAddForm extends ContentEntityForm {
 
   /**
    * Saving a new entity, shows message and reloads the page.
+   *
+   * @param array $form
+   *   The complete form array.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
    */
   public function save(array $form, FormStateInterface $form_state) {
     parent::save($form, $form_state);
@@ -92,6 +99,7 @@ class FeedbackEntityAddForm extends ContentEntityForm {
    *   The current state of the form.
    *
    * @return \Drupal\Core\Ajax\AjaxResponse
+   *   An AJAX response.
    */
   public function ajaxSubmit(array &$form, FormStateInterface $form_state) {
     $ajax_response = new AjaxResponse();
@@ -113,7 +121,9 @@ class FeedbackEntityAddForm extends ContentEntityForm {
         ],
         '#marckup' => time(),
       ];
-      \Drupal::messenger()->deleteAll();
+      // Clean error messages as we saved it to show and need
+      // to update next time.
+      \Drupal::messenger()->deleteByType('error');
       $messages = \Drupal::service('renderer')->render($message);
       $ajax_response->addCommand(new HtmlCommand('#form-system-messages', $messages));
     }

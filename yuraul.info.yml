@@ -4,4 +4,4 @@ package: Custom
 type: module
 version: 1.0
 core: 8.x
-configure: entity.feedback_entity.collection
+configure: feedback_entity.settings

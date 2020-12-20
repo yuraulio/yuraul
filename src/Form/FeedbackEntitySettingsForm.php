@@ -8,7 +8,9 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Class FeedbackEntitySettingsForm.
  *
- * @ingroup test
+ * May be used to additional post settings in future.
+ *
+ * @ingroup yuraul
  */
 class FeedbackEntitySettingsForm extends FormBase {
 

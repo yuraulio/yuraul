@@ -1,3 +1,4 @@
+# Tab into main menu with a link to main page.
 yuraul.feedback:
   title: 'Feedback'
   description: 'Main page of the Yuraul Guestbook'
@@ -7,6 +8,7 @@ yuraul.feedback:
   weight: 100
 
 # Feedback menu items definition
+# Group contains rest of menu items
 feedback.group.admin:
   title: 'Yuraul Guestbook'
   route_name: system.admin_structure_feedback
@@ -14,6 +16,7 @@ feedback.group.admin:
   description: 'Yuraul Guestbook configuration'
   weight: -100
 
+# List of all posts to administrate
 entity.feedback_entity.collection:
   title: 'Administer feedback posts'
   route_name: entity.feedback_entity.collection
@@ -21,6 +24,7 @@ entity.feedback_entity.collection:
   parent: feedback.group.admin
   weight: 1
 
+# Entity configure page
 feedback_entity.admin.structure.settings:
   title: 'Feedback post settings'
   description: 'Configure feedback view and structure'

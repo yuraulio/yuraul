@@ -1,22 +1,21 @@
 {#
 /**
  * @file feedback_entity.html.twig
- * Default theme implementation to present Feedback data.
- *
- * This template is used when viewing Feedback pages.
- *
+ * This template is used on a main guestbook page.
  *
  * Available variables:
- * - content: A list of content items. Use 'content' to print all content, or
+ * - content: A list of content items.
  * - attributes: HTML attributes for the container element.
  *
  * @see template_preprocess_feedback_entity()
  *
- * @ingroup themeable
+ * @ingroup yuraul
  */
 #}
-{#{{ dump(content.created|keys) }}#}
+
+{# Attaching syles for the markup #}
 {{ attach_library('yuraul/feedback') }}
+
 <article{{ attributes.addClass('feedback-entity')}}>
   {% if content %}
     {{ title_suffix }}

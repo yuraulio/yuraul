@@ -1,12 +1,17 @@
+{# Attaching syles for the markup #}
 {{ attach_library('yuraul/form') }}
+
+{# Some fields necessary to form work properly. #}
 {{ form.form_build_id }}
 {{ form.form_token }}
 {{ form.form_id }}
 {{ form.langcode }}
+
+{# Hidden fields anonymous user not allowed to edit. #}
 {{ form.created }}
 {{ form.status }}
-{#{{ dump(form|keys) }}#}
 
+{# Base markup #}
 <fieldset>
   <legend>Add feedback</legend>
   {{ form.system_messages }}

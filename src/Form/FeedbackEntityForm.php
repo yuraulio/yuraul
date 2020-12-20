@@ -21,7 +21,7 @@ class FeedbackEntityForm extends ContentEntityForm {
   protected $account;
 
   /**
-   * {@inheritdoc}
+   * Some dependency injection.
    */
   public static function create(ContainerInterface $container) {
     // Instantiates this form class.
@@ -32,6 +32,14 @@ class FeedbackEntityForm extends ContentEntityForm {
 
   /**
    * Building a standard edit form.
+   *
+   * @param array $form
+   *   The complete form array.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   *
+   * @return array
+   *   A render array.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     /* @var \Drupal\yuraul\Entity\FeedbackEntity $entity */
@@ -41,13 +49,14 @@ class FeedbackEntityForm extends ContentEntityForm {
   }
 
   /**
-   * Saves entity after editing and redirect.
+   * Saves entity after editing and redirect to the entity page.
    */
   public function save(array $form, FormStateInterface $form_state) {
     $entity = $this->entity;
 
     $status = parent::save($form, $form_state);
 
+    // This form used by administrator to create and edit entity.
     switch ($status) {
       case SAVED_NEW:
         $this->messenger()->addMessage($this->t('Created the %label Feedback.', [
