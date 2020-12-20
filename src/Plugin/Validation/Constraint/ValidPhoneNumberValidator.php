@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 class ValidPhoneNumberValidator extends ConstraintValidator {
 
   /**
-   * {@inheritdoc}
+   * Gets result of validation and set violation of needed.
    */
   public function validate($items, Constraint $constraint) {
     foreach ($items as $item) {
@@ -27,6 +27,10 @@ class ValidPhoneNumberValidator extends ConstraintValidator {
    * Should be a telephone number in an international format starting with a +.
    *
    * @param string $value
+   *   Value to check.
+   *
+   * @return bool
+   *   TRUE if value is valid, FALSE instead.
    */
   private function isValidPhoneNumber($value) {
     $match = preg_match('/^\+\d{1,4}\d{8,15}$/s', $value);

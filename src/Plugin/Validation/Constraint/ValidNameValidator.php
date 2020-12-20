@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 class ValidNameValidator extends ConstraintValidator {
 
   /**
-   * {@inheritdoc}
+   * Gets result of validation and set violation of needed.
    */
   public function validate($items, Constraint $constraint) {
     foreach ($items as $item) {
@@ -28,6 +28,10 @@ class ValidNameValidator extends ConstraintValidator {
    * start with an underscore or number. From 2 up to 100 symbols.
    *
    * @param string $value
+   *   Value to check.
+   *
+   * @return bool
+   *   TRUE if value is valid, FALSE instead.
    */
   private function isValidUsername($value) {
     $match = preg_match('/^[a-zA-Z][a-zA-Z_0-9 ]{0,98}[a-zA-Z0-9]$/s', $value);

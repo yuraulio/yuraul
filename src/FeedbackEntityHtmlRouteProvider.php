@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Route;
 class FeedbackEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
 
   /**
-   * {@inheritdoc}
+   * Returns routes for the entity.
    */
   public function getRoutes(EntityTypeInterface $entity_type) {
     $collection = parent::getRoutes($entity_type);

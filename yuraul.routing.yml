@@ -1,3 +1,4 @@
+# Route to the main page of Yuraul Guestbook
 yuraul.feedback:
   path: '/feedback'
   defaults:
@@ -6,6 +7,7 @@ yuraul.feedback:
   requirements:
     _permission: 'access content'
 
+# Standard Drupal page contains menu subitems.
 system.admin_structure_feedback:
   path: '/admin/config/yuraul'
   defaults:

@@ -14,10 +14,6 @@ use Drupal\Core\Entity\EntityPublishedInterface;
 interface FeedbackEntityInterface extends ContentEntityInterface, EntityChangedInterface, EntityPublishedInterface {
 
   /**
-   * Add get/set methods for your configuration properties here.
-   */
-
-  /**
    * Gets the Feedback name.
    *
    * @return string

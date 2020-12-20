@@ -1,20 +1,20 @@
 add feedback entities:
-  title: 'Create new Feedback entities'
+  title: 'Create new feedback posts'
 
 administer feedback entities:
-  title: 'Administer Feedback entities'
-  description: 'Allow to access the administration form to configure Feedback entities.'
+  title: 'Administer feedback posts'
+  description: 'Allow to access the administration form to configure feedback posts.'
   restrict access: true
 
 delete feedback entities:
-  title: 'Delete Feedback entities'
+  title: 'Delete feedback posts'
 
 edit feedback entities:
-  title: 'Edit Feedback entities'
+  title: 'Edit feedback posts'
 
 view published feedback entities:
-  title: 'View published Feedback entities'
+  title: 'View published feedback posts'
 
 view unpublished feedback entities:
-  title: 'View unpublished Feedback entities'
+  title: 'View unpublished feedback posts'
 

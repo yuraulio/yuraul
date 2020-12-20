@@ -15,7 +15,12 @@ use Symfony\Component\Validator\Constraint;
  */
 class ValidPhoneNumber extends Constraint {
 
-  // The message that will be shown if the value is not valid.
+  /**
+   * The message that will be shown if the value is not valid.
+   *
+   * @var string
+   *   An error message.
+   */
   public $notValid = '%value is not valid phone number. Check it and try again';
 
 }
