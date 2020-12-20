@@ -62,7 +62,7 @@ h1.page-title {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 15px;
+  padding: 15px 15px 0;
   border: 1px solid white;
   border-left: none;
 }
@@ -82,7 +82,17 @@ h1.page-title {
 }
 
 .post-body {
-  padding: 15px;
+  padding: 15px 15px 0;
   color: #61614e;
 }
 
+.attached {
+  margin: 15px 0 5px;
+  padding-top: 15px;
+  border-top: 1px solid white;
+}
+
+.attached + .field img,
+.attached + .field img {
+  margin: 0;
+}

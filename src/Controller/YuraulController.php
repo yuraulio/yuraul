@@ -103,7 +103,7 @@ class YuraulController extends ControllerBase {
    */
   public function show() {
 //    $entities = \Drupal::entityTypeManager()
-//      ->getStorage('feedback_entity')
+//      ->getStorage('file')
 //      ->loadMultiple();
 //    foreach ($entities as $entity) {
 //      $entity->delete();

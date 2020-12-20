@@ -37,8 +37,8 @@
         {{ content.name }}
       </div>
       <div class="post-body">
-        <p>{{ content.message }}</p>
-        {% if not content.picture %}
+        {{ content.message }}
+        {% if content.picture['#items'] %}
           <p class="attached">Attached image:</p>
           {{ content.picture }}
         {% endif %}
