@@ -31,7 +31,7 @@ class FeedbackEntityForm extends ContentEntityForm {
   }
 
   /**
-   * {@inheritdoc}
+   * Building a standard edit form.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     /* @var \Drupal\yuraul\Entity\FeedbackEntity $entity */
@@ -41,7 +41,7 @@ class FeedbackEntityForm extends ContentEntityForm {
   }
 
   /**
-   * {@inheritdoc}
+   * Saves entity after editing and redirect.
    */
   public function save(array $form, FormStateInterface $form_state) {
     $entity = $this->entity;

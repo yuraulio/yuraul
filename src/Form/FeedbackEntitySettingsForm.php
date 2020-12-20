@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Class FeedbackEntitySettingsForm.
  *
- * @ingroup yuraul
+ * @ingroup test
  */
 class FeedbackEntitySettingsForm extends FormBase {
 
@@ -35,7 +35,7 @@ class FeedbackEntitySettingsForm extends FormBase {
   }
 
   /**
-   * Defines the settings form for Feedback entities.
+   * Defines the settings form for future settings of the FeedbackEntity.
    *
    * @param array $form
    *   An associative array containing the structure of the form.
@@ -46,7 +46,7 @@ class FeedbackEntitySettingsForm extends FormBase {
    *   Form definition array.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['feedbackentity_settings']['#markup'] = 'Settings form for Feedback entities. Manage field settings here.';
+    $form['feedbackentity_settings']['#markup'] = 'Settings form for Test entity entities. Manage field settings here.';
     return $form;
   }
 

@@ -1,6 +1,6 @@
 yuraul.feedback:
   title: 'Feedback'
-  description: 'You can leave your feedback here'
+  description: 'Main page of the Yuraul Guestbook'
   parent: main
   route_name: yuraul.feedback
   menu_name: main
@@ -8,21 +8,21 @@ yuraul.feedback:
 
 # Feedback menu items definition
 feedback.group.admin:
-  title: 'Yuraul guestbook'
+  title: 'Yuraul Guestbook'
   route_name: system.admin_structure_feedback
   parent: system.admin_structure
-  description: 'Yuraul guestbook configuration'
+  description: 'Yuraul Guestbook configuration'
   weight: -100
 
 entity.feedback_entity.collection:
-  title: 'Administer feedbacks'
+  title: 'Administer feedback posts'
   route_name: entity.feedback_entity.collection
   description: 'List of all of feedbacks'
   parent: feedback.group.admin
   weight: 1
 
 feedback_entity.admin.structure.settings:
-  title: 'Feedback settings'
+  title: 'Feedback post settings'
   description: 'Configure feedback view and structure'
   route_name: feedback_entity.settings
   parent: feedback.group.admin

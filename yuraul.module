@@ -2,7 +2,14 @@
 
 use Drupal\Core\Render\Element;
 
-function yuraul_theme($existing, $type, $theme, $path) {
+/**
+ * Implements theme_hook().
+ *
+ * Add the form template with preprocess to override.
+ * Form is used on the top of the main guestbook page.
+ * Add hook for using custom template for rendering FeedbackEntity.
+ */
+function yuraul_theme() {
   return [
     'feedback_entity_add2_form' =>
       [
@@ -16,6 +23,8 @@ function yuraul_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements theme_preprocess_hook().
+ *
  * Prepares variables for sponsor templates.
  */
 function template_preprocess_feedback_entity(&$variables) {

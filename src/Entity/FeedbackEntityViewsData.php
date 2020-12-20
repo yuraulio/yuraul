@@ -10,13 +10,11 @@ use Drupal\views\EntityViewsData;
 class FeedbackEntityViewsData extends EntityViewsData {
 
   /**
-   * {@inheritdoc}
+   * Just get from parent.
    */
   public function getViewsData() {
     $data = parent::getViewsData();
 
-    // Additional information for Views integration, such as table joins, can be
-    // put here.
     return $data;
   }
 

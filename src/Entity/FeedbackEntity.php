@@ -2,7 +2,6 @@
 
 namespace Drupal\yuraul\Entity;
 
-use Drupal\Core\Entity\EntityChangedInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
@@ -56,10 +55,12 @@ use Drupal\file\Entity\File;
  *   field_ui_base_route = "feedback_entity.settings"
  * )
  */
-class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterface, EntityChangedInterface {
+class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterface {
 
   use EntityChangedTrait;
   use EntityPublishedTrait;
+
+  // Some methods to implement interface.
 
   /**
    * {@inheritdoc}
@@ -79,36 +80,6 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
   /**
    * {@inheritdoc}
    */
-  public function getEmail() {
-    return $this->get('email')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setEmail($email) {
-    $this->set('email', $email);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getPhone() {
-    return $this->get('phone')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setPhone($phone) {
-    $this->set('phone', $phone);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getCreatedTime() {
     return $this->get('created')->value;
   }
@@ -121,7 +92,19 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
     return $this;
   }
 
+  /**
+   * Prepares value to set as default for the avatar field.
+   *
+   * Create a folder in a working dir and copy the image for the default
+   * user avatar into. Creates a file entity for this file.
+   *
+   * @return string|null
+   *   The UUID of the created file entity.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
   private static function defaultImage() {
+    // Create folder and copy image file into.
     $source = \drupal_get_path('module', 'yuraul') . '/images/default.png';
     $destination = 'public://yuraul/avatars';
     \Drupal::service('file_system')
@@ -129,6 +112,7 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
     $destination = \Drupal::service('file_system')
       ->copy($source, $destination, FileSystemInterface::EXISTS_REPLACE);
     $filename = \Drupal::service('file_system')->basename($destination);
+
     // Create file entity.
     $image = File::create();
     $image->setFileUri($destination);
@@ -139,18 +123,30 @@ class FeedbackEntity extends ContentEntityBase implements FeedbackEntityInterfac
     $image->save();
     \Drupal::service('file.usage')
       ->add($image, 'yuraul', 'entity', $image->id());
+
     return $image->uuid();
   }
 
   /**
-   * {@inheritdoc}
+   * Define base fields for the entity.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
+   *   An entity instance.
+   *
+   * @return array|\Drupal\Core\Field\BaseFieldDefinition[]|\Drupal\Core\Field\FieldDefinitionInterface[]
+   *   The base field definition.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   * @throws \Drupal\Core\Entity\Exception\UnsupportedEntityTypeDefinitionException
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+    // Add the defaults entity fields.
     $fields = parent::baseFieldDefinitions($entity_type);
 
     // Add the published field.
     $fields += static::publishedBaseFieldDefinitions($entity_type);
 
+    // Add fields required by the task.
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
       ->setDescription(t('The name of the user.'))

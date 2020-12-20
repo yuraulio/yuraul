@@ -14,7 +14,7 @@ use Drupal\Core\Link;
 class FeedbackEntityListBuilder extends EntityListBuilder {
 
   /**
-   * {@inheritdoc}
+   * Add header with description for the entity list.
    */
   public function buildHeader() {
     $header['id'] = $this->t('Feedback ID');
@@ -23,7 +23,7 @@ class FeedbackEntityListBuilder extends EntityListBuilder {
   }
 
   /**
-   * {@inheritdoc}
+   * Building a row with entity information.
    */
   public function buildRow(EntityInterface $entity) {
     /* @var \Drupal\yuraul\Entity\FeedbackEntity $entity */
